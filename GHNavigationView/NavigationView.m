@@ -63,26 +63,25 @@
         self.count = [dataSource navigationView:self numberOfRowsInSection:0];
     }
     
-    if ([dataSource respondsToSelector:@selector(navigationView:numberOfColumnsInSection:)]) {
+    if ([_dataSource respondsToSelector:@selector(navigationView:numberOfColumnsInSection:)]) {
         self.column = [dataSource navigationView:self numberOfColumnsInSection:0];
     }
     
-    if ([dataSource respondsToSelector:@selector(navigationViewTopMargin)]) {
+    if ([_dataSource respondsToSelector:@selector(navigationViewTopMargin)]) {
         self.topMargin = [dataSource navigationViewTopMargin];
     }
-    if ([dataSource respondsToSelector:@selector(navigationViewLeftMargin)]) {
+    if ([_dataSource respondsToSelector:@selector(navigationViewLeftMargin)]) {
         self.leftMargin = [dataSource navigationViewLeftMargin];
     }
-    if ([dataSource respondsToSelector:@selector(navigationViewItemSize)]) {
+    if ([_dataSource respondsToSelector:@selector(navigationViewItemSize)]) {
         self.itemSize = [dataSource navigationViewItemSize];
     }
     
-    
     for (int i = 0; i < self.count; i++) {
         UIView *sview = [[UIView alloc] init];
-        if ([self.dataSource respondsToSelector:@selector(navigationView:viewForRowAtIndexPath:)]) {
+        if ([_dataSource respondsToSelector:@selector(navigationView:viewForRowAtIndexPath:)]) {
             
-            UIView *view = [self.dataSource navigationView:self viewForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+            UIView *view = [_dataSource navigationView:self viewForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
             view.tag = i;
             UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickView:)];
             view.userInteractionEnabled=YES;
