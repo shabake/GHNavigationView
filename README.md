@@ -46,6 +46,8 @@ dataSource必须实现的两个方法
 
 ```
 
+delegate的代理方法
+
 点击事件
 
 ```
